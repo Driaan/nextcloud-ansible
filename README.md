@@ -1,6 +1,25 @@
 Nextcloud (Latest)
 =========
 
+Driaan's Changes
+----
+
+LXC Containers:
+
+Set inventory -> is_container to true before running ansible
+
+OVH ISSUE:
+
+[GitHub issue](https://github.com/nextcloud/server/issues/5882)
+
+[Solution](https://github.com/nextcloud/server/issues/11264#issuecomment-570378292)
+
+Example config file:
+
+```bash script
+'objectstore' => [ 'class' => 'OC\\Files\\ObjectStore\\Swift', 'arguments' => [ 'autocreate' => true, 'user' => [ 'name' => 'OS_USERNAME', 'password' => '****', 'domain' => [ 'name' => 'Default', ], ], 'scope' => [ 'project' => [ 'name' => 'OS_TENANT_NAME', 'domain' => [ 'name' => 'Default', ], ], ], 'tenantName' => 'OS_TENANT_NAME', 'serviceName' => 'swift', 'region' => 'OS_REGION_NAME', 'url' => 'https://auth.cloud.ovh.net/v3', 'bucket' => 'YOUR_BUCKET_NAME', ], ],
+```
+
 Ansible Playbook to install
 
 * Nextcloud (Latest) - <https://nextcloud.com/>
@@ -34,10 +53,10 @@ Install
 
 ```bash
 # prepare your os and install ansible
-curl -s https://raw.githubusercontent.com/ReinerNippes/nextcloud/master/prepare_system.sh | /bin/bash
+curl -s https://raw.githubusercontent.com/driaan/nextcloud/master/prepare_system.sh | /bin/bash
 
 # clone this repo
-git clone https://github.com/ReinerNippes/nextcloud
+git clone https://github.com/driaan/nextcloud
 
 # change to nextcloud directory
 cd nextcloud
