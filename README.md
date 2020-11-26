@@ -4,15 +4,41 @@ Nextcloud (Latest)
 Driaan's Changes
 ----
 
+Run command to install:
+
+./nextcloud.yml -e fqdn=next.cloudoffice.co.za -e ssl_certificate_type=letsencrypt -e 'cert_email=driaan@envisage.co.za'
+
 LXC Containers:
 
 Set inventory -> is_container to true before running ansible
 
-OVH ISSUE:
+PSQL ISSUE:
+
+Run ansible, fails
+Run these in order:
+
+```shell script
+su postgres
+psql -U postgres
+update pg_database set datallowconn = TRUE where datname = 'template0';
+\c template0
+update pg_database set datistemplate = FALSE where datname = 'template1';
+drop database template1;
+create database template1 with template = template0 encoding = 'UTF8';
+update pg_database set datistemplate = TRUE where datname = 'template1';
+\c template1
+update pg_database set datallowconn = FALSE where datname = 'template0';
+```
+
+Run ansible again, works
+
+OVH:
 
 [GitHub issue](https://github.com/nextcloud/server/issues/5882)
 
 [Solution](https://github.com/nextcloud/server/issues/11264#issuecomment-570378292)
+
+Download openrc.sh from ca.ohv to get details required
 
 Example config file:
 
