@@ -6,7 +6,10 @@ Driaan's Changes
 
 Run command to install:
 
-./nextcloud.yml -e fqdn=next.cloudoffice.co.za -e ssl_certificate_type=letsencrypt -e 'cert_email=driaan@envisage.co.za'
+```shell script
+# fqdn eg next.cloudoffice.co.za
+./nextcloud.yml -e fqdn={{fqdn}} -e ssl_certificate_type=letsencrypt -e 'cert_email=driaan@envisage.co.za'
+```
 
 LXC Containers:
 
