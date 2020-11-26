@@ -53,10 +53,10 @@ Install
 
 ```bash
 # prepare your os and install ansible
-curl -s https://raw.githubusercontent.com/driaan/nextcloud/master/prepare_system.sh | /bin/bash
+curl -s https://raw.githubusercontent.com/driaan/nextcloud-ansible/master/prepare_system.sh | /bin/bash
 
 # clone this repo
-git clone https://github.com/driaan/nextcloud
+git clone https://github.com/driaan/nextcloud-ansible
 
 # change to nextcloud directory
 cd nextcloud
